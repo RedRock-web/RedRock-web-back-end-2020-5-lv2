@@ -7,8 +7,8 @@ import (
 )
 
 type GetForm struct {
-	types string
-	data  string
+	Types string
+	Data  string
 }
 
 func Handle(c *gin.Context) {
@@ -20,13 +20,12 @@ func Handle(c *gin.Context) {
 	}
 	var student database.Student
 	var classs []database.Class
-
-	if g.types == "int" {
-		database.G_db.Where("student_id = ?", g.data).Find(&student)
-		database.G_db.Where("student_id = ?", g.data).Find(&classs)
-	} else if g.types == "string" {
-		database.G_db.Where("student_name = ?", g.data).Find(&student)
-		database.G_db.First("student_name = ?", g.data).Find(&classs)
+	if g.Types == "int" {
+		database.G_db.Where("student_id = ?", g.Data).Find(&student)
+		database.G_db.Where("student_id = ?", g.Data).Find(&classs)
+	} else if g.Types == "string" {
+		database.G_db.Where("student_name = ?", g.Data).Find(&student)
+		database.G_db.First("student_name = ?", g.Data).Find(&classs)
 	} else {
 		FormError(c)
 	}

@@ -9,7 +9,8 @@ import (
 func main() {
 	database.ConnetDb()
 	database.CreateTable()
-	app.GetAllStudentsInfo()
+	defer app.GetAllStudentsInfo()
+	recover()
 	router.SetupRouter()
 }
 

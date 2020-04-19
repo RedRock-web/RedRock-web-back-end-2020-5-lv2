@@ -4,6 +4,6 @@ import "github.com/gin-gonic/gin"
 
 func SetupRouter() {
 	r := gin.Default()
-	r.GET("/info", Handle)
+	r.POST("/info", Handle)
 	r.Run()
 }
